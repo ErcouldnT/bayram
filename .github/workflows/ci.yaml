@@ -1,0 +1,30 @@
+name: Run Tests
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - master
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    environment: test
+    # env:
+    #   AUTH_SECRET: ${{ secrets.AUTH_SECRET }}
+    #   YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+    #   VITE_COVERAGE: ${{ vars.VITE_COVERAGE }}
+    #   NODE_ENV: ${{ vars.NODE_ENV }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+      - run: corepack enable
+      - run: yarn install
+      # - run: ./scripts/create-test-env.sh
+      # - run: cp .env.test .env
+      - run: yarn check:types
+      - run: yarn lint
+      # - run: npx playwright install
+      - run: yarn test

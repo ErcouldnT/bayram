@@ -1,0 +1,12 @@
+{
+  "editor.formatOnSave": true,
+  "files.autoSave": "onFocusChange",
+  "[javascript]": {
+    "editor.formatOnSave": false
+  },
+  "cSpell.words": ["asynciterable"],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "testing.automaticallyOpenPeekView": "never"
+}
